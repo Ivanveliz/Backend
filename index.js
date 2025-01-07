@@ -1,8 +1,11 @@
+//Varibale entorno:
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 
 //Configuracion:
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3001; 
 
 //Middleware:
 app.use(express.static('public'))
