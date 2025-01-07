@@ -8,12 +8,10 @@ const app = express()
 const PORT = process.env.PORT || 3001; 
 
 //Middleware:
-app.use(express.static('public'))
+const mainRouter = require('./src/routes/mainRoutes')
+app.use(mainRouter)
 
-//Rutas
-app.get('/', (req, res)=> {
-    res.send('hola mundo!')
-})
+app.use('/productos',require('./src/routes/productosRoutes'))
 
 //Inicio del servidor:
 app.listen(PORT, () =>{
