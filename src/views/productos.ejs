@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <h1>Productos</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Product 1</td>
-                    <td>Description</td>
-                </tr>
-            </tbody>
-        </table>
+    <%- include('partials/header') %>
+
+      <section class="productos">
+        <%productos.forEach(producto => { %>
+            <article>
+                <h3><%= producto.title %></h3>
+                <p><%= producto.description %></p>
+            </article>
+        <% }) %>
+        <h2></h2>
+      </section>
+      <%- include('partials/footer') %>
 </body>
 </html>
