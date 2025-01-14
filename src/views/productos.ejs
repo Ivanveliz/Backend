@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    <link rel="stylesheet" href="./style/style.css">
-</head>
-<body>
-    <h1>Productos</h1>
-    <%- include('partials/header') %>
+<h1>Productos</h1>
+<%- include('partials/header') %>
 
-      <section class="productos">
-        <%productos.forEach(producto => { %>
+    <section class="productos">
+        <%productos.forEach(producto=> { %>
             <article>
-                <h3><%= producto.title %></h3>
-                <p><%= producto.description %></p>
+                <h3>
+                    <%= producto.title %>
+                </h3>
+                <p>
+                    <%= producto.description %>
+                </p>
             </article>
-        <% }) %>
-        <h2></h2>
-      </section>
-      <%- include('partials/footer') %>
-</body>
-</html>
+            <% }) %>
+                <h2></h2>
+    </section>
+    <%- include('partials/footer') %>
