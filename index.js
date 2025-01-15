@@ -25,6 +25,7 @@ app.set('layout', './layouts/layout')
 const mainRouter = require('./src/routes/mainRoutes')
 app.use(mainRouter)
 
+app.use('/categorias', require('./src/routes/categoriasRouter'))
 app.use('/productos',require('./src/routes/productosRoutes'))
 app.use('/contacto', require('./src/routes/contactoRouter'))
 //Inicio del servidor:

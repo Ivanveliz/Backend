@@ -1,0 +1,16 @@
+<h1>Categorías</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre: </th>
+        </tr>
+    </thead>
+    <tbody>
+       <% categorias.forEach(categoria => { %>
+        <tr>
+            <td><%= categoria.nombre %> </td>
+        </tr>
+       <%})  %>
+    </tbody>
+</table>
