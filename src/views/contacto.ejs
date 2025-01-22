@@ -1,19 +1,21 @@
 <h1>Contacto</h1>
 
 <form action="/contacto" method="post">
-<div>
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" id="nombre">
+    <div class="form--group contact">
+        <div class="form--group--contact">
+            <label for="nombre">Nombre:</label>
+            <input class="form--input" type="text" name="nombre" id="nombre">
 
-</div>
-<div>
-    <label for="email"> Email:</label>
-    <input type="email" name="email" id="email">
-</div>
-<div>
-    <label for="mensaje">Mensaje: </label>
-    <textarea name="mensaje" id="mensaje">Comentario: </textarea>
-</div>
+        </div>
+        <div class="form--group--contact">
+            <label for="email"> Email:</label>
+            <input class="form--input" type="email" name="email" id="email">
+        </div>
+        <div class="form--group--contact">
+            <label for="mensaje">Mensaje: </label>
+            <textarea name="mensaje" id="mensaje">Comentario: </textarea>
+        </div>
+    </div>
 
-<button type="submit">Enviar</button>
+    <button class="button button--primary" type="submit">Enviar</button>
 </form>

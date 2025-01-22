@@ -1,106 +1,103 @@
-const fs = require('fs')
-const path = require('path')
+const model = require('../models/category')
 
-
-let categorias = []
 
 //CREATE
 const create = (req, res) => {
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
+    //render de la vista
     res.render('categorias/create')
 }
 
 const store = (req, res) => {
     //los datos vienen el req.body, tengo que desestructurarlo de la siguiente forma
+    const { name } = req.body
+    //uso el modelo para conectar con la bbdd 
+    model.create(name, (error, id) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
 
-    const { nombre } = req.body
+        console.log(id)
 
-    if (!nombre) {
-        return res.status(400).send('El nombre es obligatorio');
-    }
-
-    const nuevaCategoria = {
-        id: categorias.length + 1,
-        nombre,
-    }
-
-    categorias.push(nuevaCategoria)
-    //esto es para guardar las categorias en un archivo, en este caso un JSON
-    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias))
-    
-    res.redirect('/categorias')
+        res.redirect('/categorias')
+    })
 
 
 }
 //READ
 const index = (req, res) => {
 
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
-    res.render('categorias/index', { categorias })
+    model.findAll((error, categorias) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
+        res.render('categorias/index', { categorias })
+    })
+
 }
+
 //read para uno solo
 const show = (req, res) => {
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
-
     const { id } = req.params
 
-    const categoria = categorias.find((categoria) => categoria.id == Number(id))
+    model.findById(id, (error, categoria) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
+        if (!categoria) {
+            return res.status(404).send('La categoria No existe')
+        }
+        res.render('categorias/show', { categoria })
+    })
 
-    if (!categoria) {
-        return res.status(404).send('La categoria No existe')
-
-    }
-
-    res.render('categorias/show', { categoria })
 }
 
 //UPDATE
 const edit = (req, res) => {
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
 
     const { id } = req.params
 
-    const categoria = categorias.find((categoria) => categoria.id == Number(id))
+    model.findById(id, (error, categoria) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
+        if (!categoria) {
+            return res.status(404).send('La categoria No existe')
+        }
+        res.render('categorias/edit', { categoria })
+    })
 
 
-    if (!categoria) {
-        return res.status(404).send('La categoria No existe')
-
-    }
-    res.render('categorias/edit', { categoria })
 }
-
 const update = (req, res) => {
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
 
     const { id } = req.params
-    const { nombre } = req.body
-    const categoria = categorias.find((categoria) => categoria.id == Number(id))
+    const { name } = req.body
 
+    model.update(id, name, (error, changes) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
+        // console.log(changes)
+        res.redirect('/categorias')
+    })
 
-    if (!categoria) {
-        return res.status(404).send('La categoria No existe')
-    }
-    categoria.nombre = nombre
-    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias))
-    res.redirect('/categorias')
 }
 
 
 //DELETE
 
 const destroy = (req, res) => {
-    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'))
     const { id } = req.params
-    const index = categorias.findIndex((categoria) => categoria.id == id)
-    if (index == -1) {
-        return res.status(404).send('La categoria No existe')
-    }
 
-    categorias.splice(index, 1)
+    model.destroy(id, (error, changes) => {
+        if (error) {
+            return res.status(500).send('Internal Server Error.')
+        }
+        console.log(changes)
+        res.redirect('/categorias')
+    })
 
-    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias))
-    res.redirect('/categorias')
+
 }
 
 

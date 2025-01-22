@@ -1,17 +1,15 @@
 <h1>Productos</h1>
-
-
-    <section class="productos">
-        <%productos.forEach(producto=> { %>
-            <article>
-                <h3>
-                    <%= producto.title %>
-                </h3>
-                <p>
-                    <%= producto.description %>
-                </p>
-            </article>
-            <% }) %>
-                <h2></h2>
-    </section>
-    <%- include('partials/footer') %>
+<section class="productos">
+    <%productos.forEach(producto=> { %>
+        <article>
+            <h3>
+                <%= producto.title %>
+            </h3>
+            <p>
+                <%= producto.description %>
+            </p>
+        </article>
+        <% }) %>
+            <h2></h2>
+</section>
+<%- include('partials/footer') %>
