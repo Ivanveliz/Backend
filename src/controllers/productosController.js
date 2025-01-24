@@ -2,25 +2,35 @@
 //generalemnte lo explican en la documentacion 
 //este modulo querystring es nativo de node.
 const querystring = require('querystring')
-
+const model = require('../models/product')
 
 const create = (req, res) => {
     res.render('productos/create')
 }
 
-const store = (req, res) => {
+const store = async (req, res) => {
     const { name } = req.body
+
+    try {
+        const result = await model.store(name)
+        console.log(result)
+        res.redirect('/productos')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
 
 }
 
-const index = (req, res) => {
-    const query = querystring.stringify(req.query)
+const index = async (req, res) => {
+    try {
+        const productos = await model.findAll()
+        res.render('productos/index', { productos })
 
-    fetch('https://fakestoreapi.com/products/' + query)
-        .then(res => res.json())
-        .then(productos =>
-            res.render('productos', { productos })
-        )
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
 }
 
 const show = (req, res) => {
