@@ -1,4 +1,27 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-azul: #243E73;
+    --color-gris: #F2F2F2;
+    --color-blanco: #FFF;
+}
+
+.App {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #01012e;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+body {
     display: grid;
     grid-template-rows: 50px 1fr 50px;
     min-height: 100vh;
@@ -6,12 +29,14 @@ body{
     max-width: 80vw;
     font-family: sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
 
 }
 
-ul, li {
+ul,
+li {
     list-style: none;
     padding-left: 0;
 }
@@ -20,20 +45,21 @@ ul, li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 
-.menu{
+.menu {
     display: flex;
     gap: 2rem;
-    
-}
-h1{
-    color: blue  ;
+
 }
 
-.productos{
+h1 {
+    color: blue;
+}
+
+.productos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem
@@ -44,71 +70,80 @@ h1{
     border-radius: 5px;
     padding: .25em 0.5em;
     border: 1px solid gray;
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Transición suave */
     border: none;
     cursor: pointer;
-    
+
 }
 
 .button:hover {
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el cursor */
-    transform: translateY(-0.5px); /* Eleva ligeramente el botón */
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra más pronunciada al pasar el cursor */
+    transform: translateY(-0.5px);
+    /* Eleva ligeramente el botón */
 
 }
 
-.button--primary{
+.button--primary {
     background-color: dodgerblue;
     color: snow;
 }
 
-.button--danger{
+.button--danger {
     padding: 0.4 0.5em;
     background-color: red;
     color: snow;
 }
 
-.button-delete{
+.button-delete {
     margin-left: 1em;
 }
-.form--group{
+
+.form--group {
     margin-bottom: .5em;
     margin-top: .5em;
 }
 
-.form--input{
+.form--input {
     padding: .25em;
     border-radius: 5px;
     border: 1px solid gray;
 }
 
 
-table, th, td{
+table,
+th,
+td {
     border: 1px solid gray;
     border-collapse: collapse;
     padding: .5em;
 }
-table{
+
+table {
     width: 100%;
 }
-.cell--inline{
+
+.cell--inline {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.main--col{
+.main--col {
     width: 80%;
 }
 
-.button--col{
+.button--col {
     width: 20%;
 }
-.categorias{
+
+.categorias {
     margin-top: 1em;
 }
 
 
-.form--group--contact{
+.form--group--contact {
     margin: .5em;
     display: flex;
     gap: .2em;

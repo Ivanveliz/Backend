@@ -13,11 +13,12 @@
         <tbody>
             <% productos.forEach(producto=> { %>
                 <tr>
-                    <td class="main--col"><a href="/productos/<%= producto.id %>">
+                    <td class="main--col"><a href="/productos/<%= producto.product_id %>">
                             <%= producto.name %>
                         </a></td>
-                    <td class="cell--inline button-col"><a href="/productos/<%= producto.id %>/edit">Editar</a>
-                        <form action="/productos/<%= producto.id %>?_method=DELETE" method="post" class="delete-form">
+                    <td class="cell--inline button-col"><a href="/productos/<%= producto.product_id %>/edit">Editar</a>
+                        <form action="/productos/<%= producto.product_id %>?_method=DELETE" method="post"
+                            class="delete-form">
                             <button type="submit" class="button button--danger button-delete">Borrar</button>
 
                         </form>

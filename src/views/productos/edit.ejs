@@ -1,0 +1,10 @@
+<h1>Editar Producto</h1>
+<form action="/productos/<%= producto.product_id %>?_method=PUT" method="post">
+    <div class="form--group">
+        <label for="Nombre">Nombre:</label>
+        <input class="form--input" type="text" name="name" id="nombre" value="<%= producto.name %>">
+
+    </div>
+    <button type="submit"> Editar</button>
+
+</form>

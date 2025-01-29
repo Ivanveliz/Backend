@@ -33,15 +33,76 @@ const index = async (req, res) => {
     }
 }
 
-const show = (req, res) => {
-    fetch('https://fakestoreapi.com/products/' + req.params.id)
-        .then(res => res.json())
-        .then(producto => res.json(producto))
+const show = async (req, res) => {
+    console.log('ID recibido:', req.params.id);
+    const { id } = req.params
+
+    try {
+        const producto = await model.findById(id)
+        console.log(producto)
+        if (!producto) {
+            return res.status(404).send('Producto No encontrado')
+
+        }
+        res.render('productos/show', { producto })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
+
 }
 
+const edit = async (req, res) => {
+
+    console.log('ID recibido:', req.params.id);
+    const { id } = req.params
+
+    try {
+        const producto = await model.findById(id)
+        console.log(producto)
+        if (!producto) {
+            return res.status(404).send('Producto No encontrado')
+
+        }
+        res.render('productos/edit', { producto })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
+
+}
+const update = async (req, res) => {
+    const { id } = req.params
+    const { name } = req.body
+
+    try {
+        const result = await model.update(id, name)
+        res.redirect('/productos')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
+
+}
+
+
+const destroy = async (req, res) => {
+    const { id } = req.params
+    try {
+        const result = await model.destroy(id)
+        res.redirect('/productos')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
+
+}
 module.exports = {
     index,
     show,
     create,
     store,
+    edit,
+    update,
+    destroy
 }
