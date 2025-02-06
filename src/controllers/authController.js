@@ -6,7 +6,7 @@ const dashboard = (req, res) => {
     // if (!req.session.userID) {
     //     return res.redirect('/auth')
     // }
-    res.render('layouts/main', { body: 'pages/home' });
+    res.render('layouts/main', { body: 'pages/dashboard' });
 }
 
 const register = (req, res) => {

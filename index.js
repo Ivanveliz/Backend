@@ -2,7 +2,6 @@
 require('dotenv').config()
 //traer el path
 const path = require('path')
-
 const express = require('express')
 const layout = require('express-ejs-layouts')
 const app = express()
@@ -37,5 +36,5 @@ app.use('/contacto', require('./src/routes/contactoRouter'))
 app.use('/', require('./src/routes/loginRouter.js'))
 //Inicio del servidor:
 app.listen(PORT, () => {
-    console.log(`Esuchando en http://localhost:${PORT}`)
+    console.log(`Escuchando en http://localhost:${PORT}`)
 })

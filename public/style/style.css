@@ -8,6 +8,9 @@
     --color-azul: #243E73;
     --color-gris: #F2F2F2;
     --color-blanco: #FFF;
+    --color-rojo: #e21d38;
+    --color-amarillo: #fdcf0a;
+
 }
 
 .App {
@@ -20,16 +23,6 @@
 }
 
 
-
-body {
-    display: grid;
-    grid-template-rows: 50px 1fr 50px;
-    min-height: 100vh;
-    margin: auto;
-    max-width: 80vw;
-    font-family: sans-serif;
-}
-
 a {
     text-decoration: none;
 
@@ -40,6 +33,21 @@ li {
     list-style: none;
     padding-left: 0;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    margin: auto;
+    max-width: 80vw;
+    font-family: sans-serif;
+}
+h1{
+    color: var(--color-azul);
+}
+
 
 .navBar {
     display: flex;
@@ -55,16 +63,6 @@ li {
 
 }
 
-h1 {
-    color: blue;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem
-}
-
 .button {
     display: inline-block;
     border-radius: 5px;
@@ -74,7 +72,17 @@ h1 {
     /* Transición suave */
     border: none;
     cursor: pointer;
-
+    padding: 8px;
+}
+.button a {
+    display: block; /* Hace que el enlace ocupe todo el espacio del botón */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    text-align: center; /* Centra el texto */
+    line-height: inherit; /* Mantiene la alineación vertical */
+    
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Mantiene el color del texto del botón */
 }
 
 .button:hover {
@@ -86,19 +94,109 @@ h1 {
 }
 
 .button--primary {
-    background-color: dodgerblue;
-    color: snow;
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
 }
 
 .button--danger {
     padding: 0.4 0.5em;
     background-color: red;
-    color: snow;
+    color: var(--color-blanco);
 }
 
 .button-delete {
     margin-left: 1em;
 }
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    position: relative;
+    width: 350px;
+    padding: 40px;
+    background: var(--color-blanco);
+    border-radius: 10px;
+    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
+
+
+}
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    max-width: 150px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+/* Imagen de fondo cruzada */
+.form-container::before {
+
+    content: ""; /* Asegura que el pseudo-elemento se renderice */
+    display: block; /* Evita que se ignore */
+    position: absolute;
+    top: 0; /* Ajustado */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/image/rosca.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Ajusta la opacidad */
+    transform: rotate(-15deg); /* Elimina translateY para mejor ajuste */
+    z-index: 0;
+}
+.text--login{
+   text-align: center;
+   font-size: small;
+   font-weight: 200;
+   margin: 8px;
+}
+
+.error--text{
+    color: var(--color-rojo);
+    margin-top: 8px;
+
+}
+.hidden{
+    display: none;
+}
+.container--return--form{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+.container--dashboard{
+    text-align: center;
+}
+
+
+
+
+
+
+
+/* -------------------------------------------------------------- */
+
+
 
 .form--group {
     margin-bottom: .5em;
@@ -147,4 +245,12 @@ table {
     margin: .5em;
     display: flex;
     gap: .2em;
+}
+
+
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem
 }
