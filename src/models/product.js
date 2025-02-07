@@ -1,4 +1,4 @@
-const pool = require('./mysql')
+const pool = require('../config/mysql')
 
 //modelo para crear un producto.
 const store = async (name) => {

@@ -1,7 +1,7 @@
 //modulo que ya viene para usar las query estas query me sirven para ordenar de maor a menor o traer por limite de productos
 //generalemnte lo explican en la documentacion 
 //este modulo querystring es nativo de node.
-const querystring = require('querystring')
+
 const model = require('../models/product')
 
 const create = (req, res) => {
@@ -71,6 +71,7 @@ const edit = async (req, res) => {
     }
 
 }
+
 const update = async (req, res) => {
     const { id } = req.params
     const { name } = req.body

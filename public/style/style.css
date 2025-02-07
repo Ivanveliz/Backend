@@ -44,7 +44,8 @@ body {
     max-width: 80vw;
     font-family: sans-serif;
 }
-h1{
+
+h1 {
     color: var(--color-azul);
 }
 
@@ -74,15 +75,23 @@ h1{
     cursor: pointer;
     padding: 8px;
 }
+
 .button a {
-    display: block; /* Hace que el enlace ocupe todo el espacio del botón */
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    text-align: center; /* Centra el texto */
-    line-height: inherit; /* Mantiene la alineación vertical */
-    
-    text-decoration: none; /* Elimina el subrayado */
-    color: inherit; /* Mantiene el color del texto del botón */
+    display: block;
+    /* Hace que el enlace ocupe todo el espacio del botón */
+    width: 100%;
+    /* Ancho completo */
+    height: 100%;
+    /* Alto completo */
+    text-align: center;
+    /* Centra el texto */
+    line-height: inherit;
+    /* Mantiene la alineación vertical */
+
+    text-decoration: none;
+    /* Elimina el subrayado */
+    color: inherit;
+    /* Mantiene el color del texto del botón */
 }
 
 .button:hover {
@@ -108,83 +117,93 @@ h1{
     margin-left: 1em;
 }
 
-.login-container{
+.login-container {
     display: flex;
     flex-direction: column;
-    justify-content: center ;
+    justify-content: center;
     position: relative;
     width: 350px;
     padding: 40px;
     background: var(--color-blanco);
     border-radius: 10px;
-    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 1;
 
 
 }
+
 .login-header {
     text-align: center;
     margin-bottom: 20px;
-  }
-
-  .logo {
-    max-width: 150px;
-  }
-
-  .input-group {
-    margin-bottom: 15px;
-  }
-
-  input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
 }
+
+.logo {
+    max-width: 150px;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-azul);
+    border-radius: 3px;
+    margin-block: 10px;
+}
+
 /* Imagen de fondo cruzada */
 .form-container::before {
 
-    content: ""; /* Asegura que el pseudo-elemento se renderice */
-    display: block; /* Evita que se ignore */
+    content: "";
+    /* Asegura que el pseudo-elemento se renderice */
+    display: block;
+    /* Evita que se ignore */
     position: absolute;
-    top: 0; /* Ajustado */
+    top: 0;
+    /* Ajustado */
     left: 0;
     width: 100%;
     height: 100%;
     background: url('/image/rosca.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.5; /* Ajusta la opacidad */
-    transform: rotate(-15deg); /* Elimina translateY para mejor ajuste */
+    opacity: 0.5;
+    /* Ajusta la opacidad */
+    transform: rotate(-15deg);
+    /* Elimina translateY para mejor ajuste */
     z-index: 0;
 }
-.text--login{
-   text-align: center;
-   font-size: small;
-   font-weight: 200;
-   margin: 8px;
+
+.text--login {
+    text-align: center;
+    font-size: small;
+    font-weight: 200;
+    margin: 8px;
 }
 
-.error--text{
+.error--text {
     color: var(--color-rojo);
     margin-top: 8px;
 
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-.container--return--form{
+
+.container--return--form {
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 
-.container--dashboard{
+.container--dashboard {
     text-align: center;
 }
 

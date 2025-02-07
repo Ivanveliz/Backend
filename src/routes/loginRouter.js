@@ -2,9 +2,12 @@ const express = require('express');
 const authMiddleware = require('../middlewares/authMiddleware');
 const controller = require('../controllers/authController');
 
+
 const router = express.Router();
 
 router.get('/login', controller.login);
+router.post('/verify-email', controller.verifyEmail)
+router.post('/complete-registration', controller.completeRegistration)
 router.get('/dashboard', controller.dashboard);
 router.get('/register', controller.register)
 
