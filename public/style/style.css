@@ -187,6 +187,8 @@ input[type="email"] {
 .error--text {
     color: var(--color-rojo);
     margin-top: 8px;
+    text-align: center;
+    font-size: 12px;
 
 }
 

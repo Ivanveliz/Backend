@@ -24,11 +24,15 @@ const findByEmail = async (email) => {
 
 //actualizar usuario segun email
 
-const updateUserDetails = async (name, surname, role, password, tel, property, email) => {
+const updateUserDetails = async (email, surname, role, password, tel, property, name) => {
+
     const sql = `UPDATE USER_LIFEGUARD SET name = ?, surname = ?, role = ?, password = ?, tel = ?, property = ? WHERE email = ?`
     try {
-        const [rows] = await pool.query(sql, [email])
+        const [result] = await pool.query(sql, [name, surname, role, password, tel, property, email])
+        console.log("Filas afectadas:", result.affectedRows);
         return result.affectedRows > 0;
+
+
     } catch (error) {
         throw error;
     }
