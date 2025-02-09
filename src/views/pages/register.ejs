@@ -2,7 +2,7 @@
 <p>Registrate para entrar en la app Lifeguard</p>
 <p>Recorda que si no tenes tu mail en la base de datos, no vas a poder registrarte</p>
 <!-- conectar bien la base de datos para ver  de donde saco  elmail va en action -->
-<form class="form--register" action="/verify-email" method="POST">
+<form class="form-container" action="/verify-email" method="POST">
     <div class="login-container">
         <div class="login-header">
             <img src="/image/logo.jpg" alt="Logo" class="logo">
@@ -10,7 +10,7 @@
 
         <div class="input-group">
             <label for="email">Correo electrónico</label>
-            <input type="email" name="username" required>
+            <input type="email" name="email" required>
         </div>
         <button type="submit" class="button button--primary">Verificar email</button>
     </div>

@@ -10,14 +10,9 @@
         <!-- Mostrar el email traído de la base de datos (solo lectura) -->
         <div class="input-group">
             <label for="email">Correo electrónico</label>
-            <input type="email" name="username" required>
+            <input type="email" name="email" value="<%= email %>" readonly>
         </div>
 
-
-        <div class="input-group">
-            <label for="name">Usuario:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
         <div class="input-group">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
@@ -32,13 +27,13 @@
             <input type="password" name="password" required>
         </div>
 
-        <div class="input-group">
-            <label for="role">Contraseña:</label>
-            <input type="text" name="role" required>
-        </div>
+        <!-- <div class="input-group">
+            <label for="password">Repetir Contraseña:</label>
+            <input type="password" name="password" required>
+        </div> -->
 
         <div class="input-group">
-            <label for="property">Contraseña:</label>
+            <label for="property">Predio:</label>
             <input type="text" name="property" required>
         </div>
 

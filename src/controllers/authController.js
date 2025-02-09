@@ -18,14 +18,16 @@ const register = (req, res) => {
 
 const verifyEmail = async (req, res) => {
     const { email } = req.body
+    console.log("Email recibido:", email);
     try {
-        const user = model.findByEmail(email)
+        const user = await model.findByEmail(email)
         console.log(user)
+
         if (!user) {
             return res.render('layouts/main', { body: 'pages/notRegister' })
         }
 
-        res.render('pages/complete-registration', { email });
+        res.render('layouts/main', { body: 'pages/complete-registration', email });
 
 
     } catch (error) {
