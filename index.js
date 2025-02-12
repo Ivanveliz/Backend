@@ -1,16 +1,13 @@
 //Varibale entorno:
 require('dotenv').config()
+
 //traer el path
 const path = require('path')
 const express = require('express')
-const layout = require('express-ejs-layouts')
 const app = express()
 const mainRouter = require('./src/routes/mainRoutes')
 const methodOverRide = require('method-override')
 const pool = require('./src/config/mysql.js')
-
-//Configuracion:
-const PORT = process.env.PORT || 3001;
 
 //Middleware:
 //este middleware es para rebicir datos del formulario:
@@ -27,6 +24,7 @@ app.set('views', (path.join(__dirname, 'src/views')))
 // app.set('layout', './layouts/layout')
 
 app.use(mainRouter)
+app.use('/', require('./src/routes/authRouter.js'))
 //este metodo se utiliza para simular un put en los formularios ya que solo aceptan post y get
 app.use(methodOverRide('_method'))
 
@@ -42,14 +40,8 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
-app.use('/categorias', require('./src/routes/categoriasRouter'))
-app.use('/productos', require('./src/routes/productosRoutes'))
-app.use('/contacto', require('./src/routes/contactoRouter'))
-app.use('/', require('./src/routes/loginRouter.js'))
-
-
-
-
+//Configuracion:
+const PORT = process.env.PORT || 3001;
 //Inicio del servidor:
 app.listen(PORT, () => {
     console.log(`Escuchando en http://localhost:${PORT}`)

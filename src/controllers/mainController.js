@@ -1,18 +1,12 @@
 //sirve para las rutas absolutas
-
-const path = require('path')
-
 const index = (req, res) => {
-    res.render('index')
-}
-
-const private = (req, res) => {
-
-    res.sendFile(path.resolve(__dirname, '../../private/index.html'))
+    res.render('layouts/main', {
+        body: '/index',
+        error: null
+    });
 }
 
 module.exports = {
     index,
-    private,
 
 }
