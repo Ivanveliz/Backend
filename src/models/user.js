@@ -2,6 +2,37 @@ const pool = require('../config/mysql');
 const { comparePassword } = require('../helpers/hashHelper')
 const { hashPassword } = require('../helpers/hashHelper')
 
+
+//CREATE USER FOR ADMIN
+
+
+const createUser = async (email) => {
+    const checkSql = `SELECT * FROM USER_LIFEGUARD WHERE email = ?`
+    const insertSql = 'INSERT INTO USER_LIFEGUARD (email) VALUES (?)'
+
+    try {
+        const [rows] = await pool.query(checkSql, [email])
+        if (rows.length > 0) {
+            // Si el email ya existe, devolver un error
+            return {
+                error: "El email ya está registrado",
+                code: "EMAIL_EXISTS"
+            };
+        }
+        //Si el email no existe
+        const result = await pool.query(insertSql, [email])
+        console.log("Filas afectadas:", result.affectedRows);
+        return result.affectedRows > 0;
+
+    } catch (error) {
+        return {
+            error: "No se pudo crear el usuario",
+            code: "ERROR_DB"
+        };
+
+    }
+}
+
 async function findAlluser() {
     try {
         const [rows] = await pool.query('SELECT * FROM USER_LIFEGUARD');
@@ -76,7 +107,13 @@ const updateUserDetails = async (email, name, surname, role, password, tel, prop
         throw error;
     }
 }
+
+
+
+
+
 module.exports = {
+    createUser,
     verifyCredentials,
     findAlluser,
     findByEmail,

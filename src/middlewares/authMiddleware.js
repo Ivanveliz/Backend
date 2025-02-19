@@ -1,8 +1,8 @@
-const authMiddleware = (req, res, next) => {
-    if (!req.session.userId) {
-        return res.redirect('/login'); // Redirige al login si no hay sesión
+const isAuthenticated = (req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
     }
     next();
 };
 
-module.exports = authMiddleware;
+module.exports = isAuthenticated;

@@ -8,6 +8,8 @@ const app = express()
 const mainRouter = require('./src/routes/mainRoutes')
 const methodOverRide = require('method-override')
 const pool = require('./src/config/mysql.js')
+const session = require('express-session');
+
 
 //Middleware:
 //este middleware es para rebicir datos del formulario:
@@ -15,6 +17,13 @@ const pool = require('./src/config/mysql.js')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/js', express.static(path.join(__dirname, 'src/js')));
+
+//modulo para el inicio de sesion
+app.use(session({
+    secret: process.env.SECRET_KEY,  // Usamos la variable de entorno
+    resave: false,
+    saveUninitialized: false
+}));
 //motor de vista
 app.set('view engine', 'ejs')
 app.set('views', (path.join(__dirname, 'src/views')))
@@ -27,6 +36,7 @@ app.use(mainRouter)
 app.use('/', require('./src/routes/authRouter.js'))
 //este metodo se utiliza para simular un put en los formularios ya que solo aceptan post y get
 app.use(methodOverRide('_method'))
+
 
 //probando la base de datos:
 app.get('/test-db', async (req, res) => {

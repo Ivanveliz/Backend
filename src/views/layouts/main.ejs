@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <main> <%- include(`../${body}`) %> </main>
+    <%- include('../partials/navBar') %>
+        <main class="container--main"> <%- include(`../${body}`) %> </main>
 </body>
-
+<%- include(`../partials/footer`) %>
+    <script src="/js/slider.js" defer></script>
+    <script src="/js/toggleMenu.js" defer></script>
 
 </html>
