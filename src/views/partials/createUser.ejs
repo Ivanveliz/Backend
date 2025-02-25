@@ -1,0 +1,16 @@
+<div class="login-container-dashboard">
+
+    <form action="/createUser" method="POST">
+        <div class="input-group">
+            <h2>Crear nuevo usuario</h2>
+            <label for="email">Correo electrónico</label>
+            <input type="email" name="email" required>
+            <% if (typeof error !=="undefined" && error && error.trim() !=="" ) { %>
+                <p class="error--text">
+                    <%= error %>
+                </p>
+                <% } %>
+                    <button type="submit" class="button button--primary">Crear usuario</button>
+        </div>
+    </form>
+</div>

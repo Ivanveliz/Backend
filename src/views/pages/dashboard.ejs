@@ -1,20 +1,28 @@
-<h1>Bienvenido
-    <%= user.name %>
-        a LifeGuardApp
-</h1>
+<section class="section--auth">
 
-<div class="container--dashboard">
-    <form class="form-container" action="/createUser" method="POST">
-        <div class="input-group">
-            <h2>Crear nuevo usuario</h2>
-            <label for="email">Correo electrónico</label>
-            <input type="email" name="email" required>
-            <% if (typeof error !=="undefined" && error && error.trim() !=="" ) { %>
-                <p class="error--text">
-                    <%= error %>
-                </p>
-                <% } %>
-                    <button type="submit" class="button button--primary">Crear usuario</button>
+    <div class="container--gral--dashboard">
+        <div class="container--title--dashboard">
+            <div class="title--dashboard">
+                <h1 class="title--text--dashboard">Bienvenido</h1>
+                <h2>
+                    <%= user.name %>
+                        <%= user.surname %>
+                </h2>
+            </div>
+            <img src="/image/ImagenRoca.png" alt="imagen" class="img--rosca--dashboard">
         </div>
-    </form>
-</div>
+        <div class="container--info-gral">
+            <h2>Predio</h2>
+            <p>La florida</p>
+            <h3>CLIMA</h3>
+            <div class="container--weather">
+                <div class="weather--wind">
+                    info viento y clima
+                </div>
+                <div class="container--rain">
+                    info lluvia
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

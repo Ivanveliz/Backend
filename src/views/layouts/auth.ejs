@@ -9,10 +9,11 @@
 </head>
 
 <body>
-
-    <main> <%- include(`../${body}`) %> </main>
+    <%- include('../partials/menuDashBoard') %>
+        <main> <%- include(`../${body}`) %> </main>
 
 </body>
 <%- include(`../partials/footer`) %>
+    <script src="/js/toggleMenu.js" defer></script>
 
 </html>
