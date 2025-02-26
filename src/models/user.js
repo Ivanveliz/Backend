@@ -45,7 +45,19 @@ async function findAlluser() {
 
 //modelo de verificación de EMAIL y PASSWORD
 const verifyCredentials = async (email, password) => {
-    const sql = `SELECT * FROM USER_LIFEGUARD WHERE email = ?`
+    const sql = ` SELECT 
+            ul.id, 
+            ul.name, 
+            ul.surname, 
+            lr.role AS role_name,  -- Trae el nombre del rol
+            ul.password, 
+            ul.tel, 
+            p.property AS property_name,  -- Trae el nombre de la propiedad
+            ul.email
+        FROM USER_LIFEGUARD ul
+        JOIN PROPERTY p ON ul.property = p.id_property
+        JOIN LIFEGUARD_ROLE lr ON ul.role = lr.id_role  -- Relaciona el rol
+        WHERE ul.email = ?;`
 
     try {
         const [rows] = await pool.query(sql, [email])

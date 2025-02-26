@@ -8,15 +8,18 @@
         </div>
         <!-- Botón hamburguesa -->
         <button class="toggle-buton--open" aria-label="Abrir menú">☰</button>
-        <ul class="nav-links">
-            <% if(user.role===1 ) {%>
+        <ul class="nav-links admin">
+            <% if(user.role_name==='User' ) {%>
                 <li><a href="/createUser">Crear Usuario</a></li>
                 <li><a href="/">Ver todos los Usuarios</a></li>
                 <li><a href="/"> Cargar Nuevo Código</a></li>
 
+
+
                 <% } %>
                     <li><a href="/">Cargar incidente</a></li>
                     <li><a href="/">Ver todos los incidentes</a></li>
+                    <li><a href="/"> Aspirantes</a></li>
                     <li><a href="/">Cerrar sesión</a></li>
                     <button class="toggle-buton--close" aria-label="Cerrar Menú">X</button>
         </ul>

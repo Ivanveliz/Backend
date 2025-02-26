@@ -4,25 +4,44 @@
         <div class="container--title--dashboard">
             <div class="title--dashboard">
                 <h1 class="title--text--dashboard">Bienvenido</h1>
-                <h2>
+                <h3>
                     <%= user.name %>
                         <%= user.surname %>
-                </h2>
+                </h3>
             </div>
             <img src="/image/ImagenRoca.png" alt="imagen" class="img--rosca--dashboard">
         </div>
         <div class="container--info-gral">
             <h2>Predio</h2>
-            <p>La florida</p>
-            <h3>CLIMA</h3>
+            <p class="property--name">
+                <%= user.property_name %>
+            </p>
+            <h2>CLIMA</h2>
             <div class="container--weather">
                 <div class="weather--wind">
-                    info viento y clima
+                    <img src="/icons/algo-nublado.svg" alt="algo nublado">
+                    <div class="container--data-wind">
+                        <p>24°</p>
+                        <img src="/icons/Viento.svg" alt="viento">
+                        <p>NE/12KM</p>
+                    </div>
+
                 </div>
+                <div class="separetor--line"></div>
                 <div class="container--rain">
-                    info lluvia
+                    <img src="/icons/lluvias.svg" alt="lluvias">
+                    <p>70% probalidades de lluvia</p>
                 </div>
+
             </div>
+            <h2>Altura del Río</h2>
+            <div class="container--weather river">
+                <p>4.5 MTS</p>
+                <img src="/icons/Arrow-up.svg" alt="Flecha arriba">
+                <p>0.5 CM</p>
+            </div>
+
         </div>
+
     </div>
 </section>

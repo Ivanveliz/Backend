@@ -18,6 +18,6 @@ router.post('/complete-registration', controller.completeRegistration)
 router.get('/dashboard', isAuthenticated, controller.dashboard);
 
 
-router.post('/createUser', controller.createUser)
+
 
 module.exports = router;
