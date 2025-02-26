@@ -1,0 +1,14 @@
+{
+    "builds":[
+        {
+            "src":"./imdex.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes":[
+        {
+            "src":"/.(.*)",
+            "dest": "/"
+        }
+    ]
+}
