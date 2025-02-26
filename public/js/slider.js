@@ -3,14 +3,14 @@ class Slider {
         this.slider = document.querySelector(sliderSelector);
 
         if (!this.slider) {
-            console.error(`❌ No se encontró el elemento con selector: '${sliderSelector}'.`);
+
             return;
         }
         //si el slider existe?
         this.images = Array.from(this.slider.querySelectorAll(imagenSelector));
 
         if (this.images.length === 0) {
-            console.error(`❌ No se encontraron imágenes con selector: '${imagenSelector}' dentro de ${sliderSelector}.`);
+
             return;
         }
         this.currentIndex = 0;
@@ -32,12 +32,10 @@ class Slider {
 
 // 🛠 Ejecutar SOLO después de que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("✅ DOM completamente cargado.");
 
     const sliderElement = document.querySelector('.slider');
     const images = sliderElement ? sliderElement.querySelectorAll('.imagen-slider') : [];
 
-    console.log(`🖼️ Se encontraron ${images.length} imágenes en el slider.`);
 
     if (images.length > 0) {
         new Slider('.slider', '.imagen-slider');
