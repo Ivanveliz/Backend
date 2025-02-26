@@ -1,7 +1,9 @@
 {
+    "version": 2,
     "builds":[
         {
-            "src":"./imdex.js",
+            
+            "src":"index.js",
             "use": "@vercel/node"
         }
     ],
