@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-
-
     // Cerrar menú
     botonCerrar.addEventListener('click', function () {
         navlinks.classList.remove('nav-active');

@@ -1,0 +1,27 @@
+<section class="section--auth">
+    <div class="login-container-dashboard">
+
+        <form action="/createUser" method="POST">
+            <div class="input-group">
+                <h2>Crear nuevo usuario</h2>
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" required>
+
+                <label for="email">Confirmar correo</label>
+                <input type="email" name="email" required>
+
+                <label for="name">Nombre</label>
+                <input type="text" name="name" required>
+
+                <label for="surname">Apellido:</label>
+                <input type="text" name="surname" required>
+                <% if (typeof error !=="undefined" && error && error.trim() !=="" ) { %>
+                    <p class="error--text">
+                        <%= error %>
+                    </p>
+                    <% } %>
+                        <button type="submit" class="button button--primary">Crear usuario</button>
+            </div>
+        </form>
+    </div>
+</section>

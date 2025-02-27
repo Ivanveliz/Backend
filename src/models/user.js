@@ -61,7 +61,7 @@ const verifyCredentials = async (email, password) => {
 
     try {
         const [rows] = await pool.query(sql, [email])
-        console.log("Resultado de la consulta:", rows);
+
         if (rows.length === 0) {
             return {
                 error: "El usuario no existe",
