@@ -1,39 +1,67 @@
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const multer = require('multer');
 
-const index = (req, res) => {
+// Configurar almacenamiento de archivos en memoria
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-    res.render('contacto')
+
+
+
+const renderContacto = (req, res) => {
+  res.render('layouts/main', {
+      body:'pages/contact',
+        error: null
+    } )
+      
+   
 }
+// Función para manejar el formulario y enviar correo
+const submit = async (req, res) => {
+    try {
+        const { name, email, message } = req.body;
+        const resume = req.file
 
-const submit = async (req, res) =>{
-    console.log(req.body)
-    //esto es lo que hace que se conecte al mail 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-        },
-      });
+        // Configurar Nodemailer
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port: process.env.SMTP_PORT,
+          secure: process.env.SMTP_SECURE === "true", // Convierte el string en booleano
+          auth: {
+              user: process.env.SMTP_USER,
+              pass: process.env.SMTP_PASS
+          }
+        });
 
-      try {
-        const info = await transporter.sendMail({
-          from: `"${req.body.nombre}" <${req.body.email}>`, // sender address
-          to: "bar@example.com, baz@example.com", // list of receivers
-          subject: "Formulario de contacto. ✔", // Subject line
-          text: req.body.mensaje, // plain text body
-          html: `<pre>${req.body.mensaje}</pre>`, // html body el pre hace que el texto quede en formato como fue escrito (con los entener)
-        })
-        console.info(info)
-      } catch (error) {
-        console.error(error)
-      }
+        // Configurar el correo
+        const mailOptions = {
+            from: email,
+            to: 'ivandveliz@gmail.com',
+            subject: `Nuevo mensaje de ${name}`,
+            text: `Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}`,
+            attachments: []
+        };
 
-    res.send('Enviando...')
-  
-}
+        // Si hay un archivo, adjuntarlo
+        if (resume) {
+            mailOptions.attachments.push({
+                filename: resume.originalname,
+                content: resume.buffer
+            });
+        }
+
+        // Enviar el correo
+        await transporter.sendMail(mailOptions);
+        res.status(200).send('Mensaje enviado correctamente');
+    } catch (error) {
+        console.error('Error enviando el correo:', error);
+        res.status(500).send('Hubo un error al enviar el correo');
+    }
+};
+
+// Exportar funciones y configuración de Multer
 module.exports = {
-    index,
-    submit,
-  }
+  renderContacto,
+  submit,
+    upload,
+};
