@@ -6,6 +6,7 @@ const renderLogin = (req, res) => {
     res.render('layouts/main', {
         body: 'pages/auth',
         error: null
+
     });
 }
 
@@ -23,7 +24,6 @@ const login = async (req, res) => {
         }
         // Aquí iría la validación contra la base de datos
         const result = await model.verifyCredentials(email, password)
-        console.log(result)
 
         if (result.error) {
             if (result.code === "USER_NOT_FOUND") {
@@ -45,7 +45,9 @@ const login = async (req, res) => {
                 error: "Hubo un error con la sesión. Intenta nuevamente."
             });
         }
+
         req.session.user = result.user;
+        console.log("✅ Usuario guardado en sesión:", req.session.user);
         res.redirect('/dashboard');
 
     } catch (error) {
@@ -68,46 +70,6 @@ const dashboard = (req, res) => {
     });
 };
 
-
-const createUser = async (req, res) => {
-    const { email } = req.body
-
-    if (!email) {
-        return res.render("layouts/auth", {
-            body: 'pages/dashboard',
-            error: 'Todos los campos son obligatorios'
-        });
-    }
-
-    try {
-        const newUser = await model.createUser(email)
-
-        if (newUser.error) {
-            if (newUser.code === "EMAIL_EXISTS") {
-                return res.render('layouts/auth', {
-                    body: 'pages/dashboard',
-                    error: newUser.error
-                })
-            }
-        }
-        res.render('layouts/auth', {
-            body: 'pages/complete-registration',
-            error: newUser.error
-        });
-
-        // Si el usuario se crea correctamente
-        return res.render('layouts/main', {
-            body: 'pages/registration-success',
-
-        });
-    } catch (error) {
-        console.error("Error en el controlador:", error);
-        return res.status(500).render('layouts/auth', {
-            body: 'pages/dashboard',
-            error: 'Error en el servidor'
-        });
-    }
-}
 
 
 const register = (req, res) => {
@@ -162,7 +124,7 @@ const completeRegistration = async (req, res) => {
 }
 
 module.exports = {
-    createUser,
+
     renderLogin,
     login,
     dashboard,

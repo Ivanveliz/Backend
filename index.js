@@ -20,10 +20,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/js', express.static(path.join(__dirname, 'src/js')));
 
 //modulo para el inicio de sesion
+
 app.use(session({
-    secret: process.env.SECRET_KEY,  // Usamos la variable de entorno
+    secret: process.env.SECRET_KEY || 'mi_secreto',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: false, httpOnly: true }
 }));
 //Configuracion EJS
 app.set('view engine', 'ejs')
@@ -35,7 +37,6 @@ app.set('views', (path.join(__dirname, 'src/views')))
 
 app.use(mainRouter)
 app.use('/', require('./src/routes/authRouter.js'))
-app.use('/', require('./src/routes/contactRouter'))
 //este metodo se utiliza para simular un put en los formularios ya que solo aceptan post y get
 app.use(methodOverRide('_method'))
 
