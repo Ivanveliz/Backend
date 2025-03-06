@@ -1,9 +1,11 @@
 const express = require('express')
-const controller = require ('../controllers/contactoController')
+const controller = require('../controllers/contactoController')
 const router = express.Router();
 
-router.get('/contacto', controller.renderContacto)
-router.post('/contacto', controller.upload.single('resume'), controller.submit)
+
+router.get("/", controller.renderContacto);
+
+router.post("/send-email", controller.upload.single("resume"), controller.sendEmail);
 
 
 module.exports = router

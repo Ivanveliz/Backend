@@ -15,7 +15,8 @@ const fs = require('fs')
 
 //Middleware:
 //este middleware es para rebicir datos del formulario:
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/js', express.static(path.join(__dirname, 'src/js')));
 
@@ -36,9 +37,14 @@ app.set('views', (path.join(__dirname, 'src/views')))
 // app.set('layout', './layouts/layout')
 
 app.use(mainRouter)
-app.use('/', require('./src/routes/authRouter.js'))
-//este metodo se utiliza para simular un put en los formularios ya que solo aceptan post y get
 app.use(methodOverRide('_method'))
+app.use('/', require('./src/routes/authRouter.js'))
+app.use("/api/contacto", require("./src/routes/contactRouter.js"));
+
+
+
+//este metodo se utiliza para simular un put en los formularios ya que solo aceptan post y get
+
 
 
 //probando la base de datos:
