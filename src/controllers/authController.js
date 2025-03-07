@@ -82,10 +82,8 @@ const verifyEmail = async (req, res) => {
 
     // Validación de campos vacíos
     if (!email) {
-        return res.render("layouts/main", {
-            body: 'pages/register',
-            error: 'Todos los campos son obligatorios'
-        });
+        req.flash("error", "Todos los campos son obligatorios");
+        return res.redirect("/register");
     }
 
     try {

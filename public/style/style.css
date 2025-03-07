@@ -29,6 +29,18 @@ h1 {
     color: var(--color-azul);
 }
 
+.text-white {
+    color: var(--color-blanco);
+}
+
+.text--strong {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.text--margin {
+    margin-block: 1rem;
+}
 /* estilos de barra de navegacion */
 .navbar {
     display: flex;
@@ -101,6 +113,9 @@ main {
     gap: 2rem;
 }
 .section--auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -123,7 +138,17 @@ h3 {
     margin-left: 2rem;
     font-size: 1.2rem;
 }
-
+.container--gral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block: 30px;
+    gap: 1rem;
+    padding: 40px 25px;
+    background: var(--color-blanco);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 .container--gral--dashboard {
     display: flex;
     flex-direction: column;
@@ -174,6 +199,22 @@ h3 {
     z-index: 1;
 }
 
+.container--info--not--register {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--color-gris);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    z-index: 1;
+}
+.blue {
+    background-color: var(--color-azul);
+}
 .container--weather {
     background-color: var(--color-azul);
     border-radius: 1rem;
@@ -262,6 +303,13 @@ h3 {
     margin-left: 1em;
 }
 
+.button--border--white {
+    background-color: var(--color-azul);
+    border: 1px solid var(--color-gris);
+}
+.button--border--white a {
+    color: var(--color-blanco);
+}
 .container--link--aspirantes {
     display: flex;
     align-items: center;
@@ -350,7 +398,7 @@ h3 {
     align-items: center;
     position: relative;
     width: 350px;
-    padding: 40px;
+    padding: 20px;
     background: var(--color-blanco);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -358,12 +406,18 @@ h3 {
     z-index: 1;
 }
 
+.form-container {
+    margin: 1rem;
+}
 .text--register {
-    width: 350px;
+    max-width: 80%;
+    text-align: center;
 }
 
 .p--register--group {
-    margin-block: 1rem;
+    margin-block: 0.5rem;
+    text-align: center;
+    padding: 1rem;
 }
 .login-header {
     text-align: center;
@@ -401,12 +455,21 @@ input[type='email'] {
     width: 100%;
     background-color: var(--color-rojo);
     color: var(--color-blanco);
-    margin-top: 0.5rem;
     padding: 0.5rem;
     text-align: center;
     font-size: 1.2rem;
 }
-
+.container--form--not--register {
+    display: flex;
+    flex-direction: column;
+    margin-block: 0.5rem;
+}
+.container--button--not--register {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+}
 .hidden {
     display: none;
 }

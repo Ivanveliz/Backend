@@ -1,14 +1,27 @@
-<div class="login-container">
-    <section class="section--auth">
+<section class="section--auth">
+    <div class="container--gral">
         <h1>ERROR EN EL REGISTRO</h1>
-        <p class="error--text">
+        <p class="error--text text--strong">
             <%= error %>
         </p>
-        <div class="p--register--group"></div>
-        <p>Si pertences al Equipo de guardavidas de Costanera Rosario comunicate con nosotros</p>
-        <p>Si queres formar parte de nuestro Equipo. dejanos tu cv</p>
+        <p class="text--strong">Si pertenecés al Equipo de Guardavidas de Costanera Rosario comunicate con nosotros.</p>
 
 
-    </section>
-    <button class="button button--primary"><a href="/login">Intentar de nuevo</a></button>
-</div>
+        <div class="container--info--not--register blue">
+            <p class="text-white text--strong text--margin"> Si querés formar parte de nuestro Equipo, dejanos tu CV</p>
+            <div class="container--form--not--register">
+                <form action="/upload-cv" method="POST" enctype="multipart/form-data">
+                    <label class="text-white">Adjuntar Curriculum:</label>
+                    <input class="text-white" type="file" name="resume" accept=".pdf">
+                    <div class="container--button--not--register">
+                        <button type="submit" class="button">Enviar CV</button>
+                        <button class="button button--border--white"><a href="/login">Volver</a></button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -10,7 +10,7 @@ const methodOverRide = require('method-override')
 const pool = require('./src/config/mysql.js')
 const session = require('express-session');
 const fs = require('fs')
-
+const flash = require("connect-flash");
 
 
 //Middleware:
@@ -28,6 +28,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false, httpOnly: true }
 }));
+app.use(flash());
 //Configuracion EJS
 app.set('view engine', 'ejs')
 app.set('views', (path.join(__dirname, 'src/views')))
